@@ -1,0 +1,26 @@
+{
+  "name": "passman-server",
+  "version": "1.0.0",
+  "description": "Manage passwords with ease by storing them at server.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/gourish13/passman-server.git"
+  },
+  "keywords": [
+    "password-manager",
+    "password-manager-server"
+  ],
+  "author": "Gourish Sadhu",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/gourish13/passman-server/issues"
+  },
+  "homepage": "https://github.com/gourish13/passman-server#readme",
+  "dependencies": {
+    "express": "^4.17.1"
+  }
+}

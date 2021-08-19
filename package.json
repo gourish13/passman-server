@@ -2,7 +2,7 @@
   "name": "passman-server",
   "version": "1.0.0",
   "description": "Manage passwords with ease by storing them away from your system.",
-  "main": "index.js",
+  "main": "server.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },

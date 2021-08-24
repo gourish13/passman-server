@@ -3,8 +3,6 @@ const User = require('../models/services');
 const { signToken } = require('../utils/tokens'); 
 const mailer = require('../utils/mailer');
 
-// console.log(mailer.MAILTYPE, mailer.sendEmail())
-
 // Initiate User Registration
 const signup = (req, res) => {
     const saltRounds = 10;

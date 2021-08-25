@@ -3,6 +3,7 @@ require('dotenv').config();
 const express = require('express');
 const app = express();
 
+// Global Middlewares
 app.use(require('cors')());
 app.use(require('morgan')('tiny'));
 app.use(express.json());
@@ -16,7 +17,14 @@ app.use('/api/v1', require('./routes/api'));
 
 const PORT = process.env.PORT || 3000
 
-app.listen(PORT, err => {
+const server = app.listen(PORT, err => {
     if (err) console.log(err);
-    console.log('[ 🔥 SERVER ] PORT:', PORT)
-})
+    console.log(`[ 🔥 SERVER ] PORT: ${PORT}`)
+});
+
+process.on('SIGINT', () => {
+    server.close(() => {
+        console.log('Shuting Down Server......');
+        process.exit();
+    });
+});

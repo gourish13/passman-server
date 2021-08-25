@@ -32,7 +32,7 @@ const signup = (req, res) => {
                                 else {
                                     mailer.sendEmail(user.email, mailer.MAILTYPE.VERIFY, token);
                                     res.status(200).json({ status: 'Email sent for verification' });
-                                    res.status(200).json({ Authorization: token });
+                                    // res.status(200).json({ Authorization: token });
                                 }
                             });
                         }
@@ -72,10 +72,12 @@ const isSignedUp = (req, res) => {
 
 // Login User By Email-Id And Password
 const login = (req, res) => {
-    User.findOne({email: req.body.email}, '_id password services', (err, user) => {
+    User.findOne({email: req.body.email, verified: true}, '_id password services.sname', (err, user) => {
         if (err)
             res.status(500).json({status: 'Internal Server Error'});
-        else {
+        else if (user === null)
+            res.status(401).json({status: 'User account not registered, please signup'});
+        else 
             compare(req.body.password, user.password, (err, result) => {
                 if (err)
                     res.status(500).json({status: 'Internal Server Error'});
@@ -83,15 +85,13 @@ const login = (req, res) => {
                     res.status(403).json({status: 'Wrong Email or Password'});
                 else {
                     signToken( { id: user._id }, (err, token) => {
-                        if (err) {
+                        if (err)
                             res.status(500).json({status: 'Internal Server Error'});
-                        } 
                         else 
                             res.status(200).json({ Authorization: token, services: user.services });
                     });
                 }
             });
-        }
     });
 };
 

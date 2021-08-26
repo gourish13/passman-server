@@ -13,7 +13,8 @@
   },
   "keywords": [
     "password-manager",
-    "password-manager-server"
+    "password-manager-server",
+    "password-manager-backend"
   ],
   "author": "Gourish Sadhu",
   "license": "MIT",

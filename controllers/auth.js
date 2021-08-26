@@ -32,7 +32,6 @@ const signup = (req, res) => {
                                 else {
                                     mailer.sendEmail(user.email, mailer.MAILTYPE.VERIFY, token);
                                     res.status(200).json({ status: 'Email sent for verification' });
-                                    // res.status(200).json({ Authorization: token });
                                 }
                             });
                         }

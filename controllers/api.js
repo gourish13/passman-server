@@ -1,5 +1,6 @@
 const { compare } = require('bcrypt');
 const User = require('../models/services');
+const { encrypted, decrypted } = require('../utils/aes');
 
 
 // Master Password Matching Middleware
@@ -44,7 +45,7 @@ const getService = (req, res) => {
                 else {
                     user.services = user.services
                         .find( service => service.sname == req.body.sname );
-                    res.status(200).json({ servicePassword: user.services[0].spassword });
+                    res.status(200).json({ servicePassword: decrypted(user.services[0].spassword) });
                 }
             });
         }
@@ -54,7 +55,7 @@ const getService = (req, res) => {
 // Add a Password Service
 const addService = (req, res) => {
     const sname = req.body.sname;
-    const spassword = req.body.spassword;
+    const spassword = encrypted(req.body.spassword);
     if (!sname || !spassword)
             res.status(400).json({status: 'Service name and password required for adding service'});
     else
@@ -73,7 +74,7 @@ const addService = (req, res) => {
 // Update a Passsword Service
 const updateService = (req, res) => {
     const sname = req.body.sname;
-    const spassword = req.body.spassword;
+    const spassword = encrypted(req.body.spassword);
     if (!sname || !spassword)
             res.status(400).json({status: 'Service name and password required for updating service'});
     else

@@ -24,7 +24,8 @@ const server = app.listen(PORT, err => {
 
 process.on('SIGINT', () => {
     server.close(() => {
-        console.log('Shuting Down Server......');
+        console.log('\n 🛑 Shuting Down Server......');
+
         process.exit();
     });
 });

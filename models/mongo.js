@@ -8,5 +8,5 @@ mongoose.connect(dbUri, {
     useFindAndModify: false,
     useCreateIndex: true
 })
-    .then( result => console.log('Conneced to DB') )
+    .then( result => console.log('[ 🍀 MONGO DB ] Connected') )
     .catch(console.log);

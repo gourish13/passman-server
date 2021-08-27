@@ -21,8 +21,7 @@ const signup = (req, res) => {
                     })
                     .save( (error, user) => {
                         if (error) {
-                            console.log(error);
-                            res.status(500).json({status: 'Internal Server Error'});
+                            res.status(200).json({status: 'Email Already Registered'});
                         } 
                         else {
                             signToken( { id: user._id }, (err, token) => {

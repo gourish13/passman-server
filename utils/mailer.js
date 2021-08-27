@@ -35,6 +35,6 @@ exports.sendEmail = function(receiver, type, token) {
         if (err)
             console.log(err);
         else
-            console.log('Email sent : ', info.response);
+            console.log('✅☑️  Email sent : ', info.response);
     })
 };

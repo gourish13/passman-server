@@ -3,8 +3,8 @@ const jwt = require('jsonwebtoken');
 const SECRET = process.env.SECRET;
 
 // Sign Token
-exports.signToken = (payload, callback) => {
-    jwt.sign(payload, SECRET, { expiresIn: 600 }, callback);
+exports.signToken = (payload, callback, expiresIn = 600) => {
+    jwt.sign(payload, SECRET, { expiresIn }, callback);
 };
 
 // Verify Token Middleware

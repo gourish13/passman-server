@@ -8,14 +8,14 @@ app.use(require('cors')());
 app.use(require('morgan')('tiny'));
 app.use(express.json());
 
-const mongoConnect = require('./models/mongo');
+require("./models/mongo");
 
 // Auth Routes
-app.use('/auth', require('./routes/auth'));
+app.use("/auth", require("./routes/auth"));
 // Api Routes
-app.use('/api/v1', require('./routes/api'));
+app.use("/api/v1", require("./routes/api"));
 
-const PORT = process.env.PORT || 3000
+const PORT = process.env.PORT || 3000;
 
 const server = app.listen(PORT, err => {
     if (err) console.log(err);

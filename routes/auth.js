@@ -1,15 +1,15 @@
 const express = require('express');
 const router = express.Router();
 const { verifyToken } = require('../utils/tokens');
-const { 
-        signup,
-        verify,
-        isSignedUp,
-        login,
-        resetPassword,
-        forgotPassword,
-        deleteUser
-} = require('../controllers/auth');
+const {
+  signup,
+  verify,
+  isSignedUp,
+  login,
+  resetPassword,
+  forgotPassword,
+  deleteUser,
+} = require("../controllers/auth");
 
 router.get('/signed-up', isSignedUp);
 router.post('/signup', signup); 
